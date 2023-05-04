@@ -4,7 +4,7 @@ import CustomerRepositoryInterface from "../../domain/repository/customer-reposi
 import CustomerModel from "../database/sequelize/model/customer.model";
 import ProductModel from "../database/sequelize/model/product.model";
 
-export default class ProductRepository implements CustomerRepositoryInterface {
+export default class CustomerRepository implements CustomerRepositoryInterface {
 
   async create(entity: Customer): Promise<void> {
     await CustomerModel.create({
@@ -20,7 +20,7 @@ export default class ProductRepository implements CustomerRepositoryInterface {
   }
 
   async update(entity: Customer): Promise<void> {
-    await ProductModel.update(
+    await CustomerModel.update(
       {
         name: entity.name,
         street: entity.address.street,
@@ -60,7 +60,7 @@ export default class ProductRepository implements CustomerRepositoryInterface {
     return customerModels.map(customerModel => {
       const customer = new Customer(customerModel.id, customerModel.name);
       const address = new Address(customerModel.street, customerModel.number, customerModel.zipcode, customerModel.city)
-      customer.Address = address;
+      customer.changeAddress(address);
       if (customerModel.active) {
         customer.activate();
       }
