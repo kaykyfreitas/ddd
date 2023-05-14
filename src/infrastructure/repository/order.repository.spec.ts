@@ -46,7 +46,7 @@ describe('Order repository test', () => {
     await productRepository.create(product);
 
     const orderItem = new OrderItem('1', product.name, product.price, product.id, 2);
-    const order = new Order('123', '123', [orderItem])
+    const order = new Order('123', '1', [orderItem])
 
     const orderRepository = new OrderRepository();
     await orderRepository.create(order);
@@ -56,9 +56,9 @@ describe('Order repository test', () => {
       include: ['items']
     })
 
-    expect(orderModel?.toJSON).toStrictEqual({
+    expect(orderModel?.toJSON()).toStrictEqual({
       id: '123',
-      customer_id: '123',
+      customer_id: '1',
       total: order.total(),
       items: [
         {
@@ -67,7 +67,7 @@ describe('Order repository test', () => {
           price: orderItem.price,
           quantity: orderItem.quantity,
           order_id: '123',
-          product_id: '123'
+          product_id: '1'
         }
       ]
     })
