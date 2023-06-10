@@ -32,11 +32,11 @@ export class OrderItem {
   }
 
   get price(): number {
-    return this._price * this._quantity;
+    return this._price;
   }
 
-  orderItemTotal(): number {
-    return this._price * this._quantity;
+  total(): number {
+    return this._price * this._quantity
   }
 
 }
