@@ -125,8 +125,6 @@ describe('Order repository test', () => {
 
     const foundOrder = await orderRepository.findById('123');
 
-    console.log(orderModel?.toJSON())
-
     expect(orderModel?.toJSON()).toEqual({
       id: foundOrder.id,
       customer_id: foundOrder.customerId,
