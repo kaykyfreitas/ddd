@@ -43,7 +43,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
     const customerModel = await CustomerModel.findOne({ where: { id } });
 
     if (customerModel == null) {
-      throw new Error("Product not found");
+      throw new Error("Customer not found");
     }
     const address = new Address(customerModel.street, customerModel.number, customerModel.zipcode, customerModel.city)
     const customer =  new Customer(customerModel.id, customerModel.name);
