@@ -16,8 +16,6 @@ export default class CreateProductUseCase {
 
     await this.productRepository.create(product);
 
-    console.log(product);
-
     return {
       id: product.id,
       name: product.name,

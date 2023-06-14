@@ -45,7 +45,7 @@ describe('Unit test create customer use case', () => {
 
     input.name = '';
 
-    await expect(useCase.execute(input)).rejects.toThrow("Name is required")
+    await expect(useCase.execute(input)).rejects.toThrow("customer: name is required")
   });
 
   it('should throw an error when street is missing', async () => {
